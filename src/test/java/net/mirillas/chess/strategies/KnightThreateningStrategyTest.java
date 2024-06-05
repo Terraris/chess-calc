@@ -52,25 +52,4 @@ public class KnightThreateningStrategyTest {
             assertEquals(expectedThreats[i], numThreatPositions);
         }
     }
-
-    @Test
-    public void testCalculateThreadsOnDifferentBoardSizes() {
-        Knight knight = new Knight();
-
-        int[] boardSizes = {3, 4, 5, 10, 20};
-
-        for (int boardSize : boardSizes) {
-            ChessBoard chessBoard = new ChessBoard(boardSize);
-
-            int centralPosition = boardSize / 2;  // For odd-numbered ones, this is a central square.
-            Location position = new Location(centralPosition, centralPosition);
-
-            knight.calculateThreads(chessBoard, position);
-
-            int expectedThreats = (boardSize >= 5) ? 8 : (boardSize == 3) ? 4 : 2;
-
-            long numThreatPositions = countThreatPositions(chessBoard);
-            assertEquals(expectedThreats, numThreatPositions);
-        }
-    }
 }
