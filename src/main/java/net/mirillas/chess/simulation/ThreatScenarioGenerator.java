@@ -8,6 +8,7 @@ import net.mirillas.chess.pieces.ChessPiece;
 import net.mirillas.chess.view.ChessBoardView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.UUID;
@@ -24,6 +25,7 @@ import static net.mirillas.chess.simulation.BoardManager.countThreatPositions;
  */
 @Getter
 @Slf4j
+@Component
 public class ThreatScenarioGenerator {
     private static final Logger LOGGER = LoggerFactory.getLogger(ThreatScenarioGenerator.class);
     private final ChessBoardView boardDrawer = new ChessBoardView();
@@ -39,6 +41,7 @@ public class ThreatScenarioGenerator {
      * the piece location, and the chessboard itself.
      */
     public Map<UUID, ThreatScenario> generateThreatScenarios(ChessPiece piece, int boardSize) {
+        threatScenarios.clear();
         long startTime = System.currentTimeMillis();
         for (int rank = 0; rank < boardSize; rank++) {
             for (int file = 0; file < boardSize; file++) {
