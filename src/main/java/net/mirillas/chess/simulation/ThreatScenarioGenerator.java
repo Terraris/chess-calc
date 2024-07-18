@@ -41,6 +41,7 @@ public class ThreatScenarioGenerator {
      * the piece location, and the chessboard itself.
      */
     public Map<UUID, ThreatScenario> generateThreatScenarios(ChessPiece piece, int boardSize) {
+        threatScenarios.clear();
         long startTime = System.currentTimeMillis();
         for (int rank = 0; rank < boardSize; rank++) {
             for (int file = 0; file < boardSize; file++) {

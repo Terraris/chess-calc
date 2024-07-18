@@ -6,7 +6,7 @@ import net.mirillas.chess.pieces.ChessPiece;
 import net.mirillas.chess.pieces.ChessPieceFactory;
 import net.mirillas.chess.simulation.ThreatScenarioGenerator;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +30,7 @@ public class ChessRestController {
         this.chessPieceFactory = chessPieceFactory;
     }
 
-    @PostMapping("/simulate")
+    @GetMapping("/simulate")
     public Map<UUID, ThreatScenario> simulate(@RequestParam("piece") String pieceName, @RequestParam("size") Integer size) {
         ChessPiece piece = chessPieceFactory.create(pieceName);
         return threatScenarioGenerator.generateThreatScenarios(piece, size);
